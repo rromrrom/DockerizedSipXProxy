@@ -1,6 +1,6 @@
 FROM centos:7
 MAINTAINER Roman <sometime.developer@gmail.com>
 
-RUN yum clean all && yum install -y http://download.sipxcom.org/pub/16.12-unstable/CentOS_6/x86_64/sipxproxy-16.12-8772.c087a.x86_64.rpm
+RUN wget http://download.sipxcom.org/pub/16.12-unstable/sipxecs-16.12.0-centos.repo -O /etc/yum.repos.d/sipxecs.repo && yum clean all && yum install -y sipxproxy
 
 CMD service sipxproxy start
