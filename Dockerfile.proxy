@@ -4,7 +4,7 @@ MAINTAINER Roman <sometime.developer@gmail.com>
 ADD sipxecs.repo /etc/yum.repos.d/
 RUN yum install -y initscripts
 
-RUN yum install -y sipxtacklib sipxportlib unixODBC zeromq oss_core mongo-cxx-driverpostgresql-odbc yum-utils
+RUN yum install -y sipxtacklib sipxportlib unixODBC zeromq oss_core mongo-cxx-driver postgresql-odbc yum-utils
 RUN yumdownloader sipxproxy sipxcommserverlib
 RUN rpm -i --nodeps ./*.rpm
 
