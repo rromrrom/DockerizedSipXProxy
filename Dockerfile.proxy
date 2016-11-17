@@ -2,6 +2,14 @@ FROM centos:6.8
 MAINTAINER Roman <sometime.developer@gmail.com>
 
 ADD sipxecs.repo /etc/yum.repos.d/
-RUN yum clean all && yum install -y sipxproxy
+
+RUN adduser sipx
+RUN yum install -y sipxtacklib sipxportlib unixODBC zeromq oss_core mongo-cxx-driverpostgresql-odbc yum-utils
+RUN yumdownloader sipxproxy sipxcommserverlib
+RUN rpm -i --nodeps ./*.rpm
+
+#RUN mkdir -p /etc/sipxpbx
+#RUN yum install -y mount nfs-utils nfs-utils-lib
+#RUN mount $IP:/etc/sipxpbx/ /etc/sipxpbx
 
 CMD service sipxproxy start
