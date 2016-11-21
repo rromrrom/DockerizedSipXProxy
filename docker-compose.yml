@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+      sipproxy:
+        build:
+            dockerfile: Dockerfile.proxy
+            context: .
+        volumes:
+            - /var/run/sipxpbx:/var/run/sipxpbx
+            - /var/log/sipxpbx:/var/log/sipxpbx
+            - /etc/sipxpbx:/etc/sipxpbx
+        image: rromrrom/sipproxy
+        network_mode: "host"
+
+      sipregistrar:
+        build:
+            dockerfile: Dockerfile.registrar
+            context: .
+        volumes:
+            - /var/run/sipxpbx:/var/run/sipxpbx
+            - /var/log/sipxpbx:/var/log/sipxpbx
+            - /etc/sipxpbx:/etc/sipxpbx
+        image: rromrrom/sipregistrar
+        network_mode: "host"
+
