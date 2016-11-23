@@ -23,3 +23,11 @@ services:
         image: rromrrom/sipregistrar
         network_mode: "host"
 
+      uniteme:
+        image: rromrrom/uniteme
+        build:
+           context: .
+        links:
+           - sipproxy
+           - sipregistrar
+
